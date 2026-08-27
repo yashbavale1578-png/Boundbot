@@ -1,7 +1,8 @@
 import { RoleRequest, RoleRequestStatus } from "@/types/roles";
 import { readJsonFile, writeJsonFile } from "../github/store";
 import { getDiscordClient } from "./client";
-import { randomUUID } from "crypto";
+import { Routes } from "discord-api-types/v10";
+import { randomUUID } from "node:crypto";
 
 const REQUESTS_FILE_PATH = "data/requests.json";
 
@@ -29,10 +30,11 @@ export const updateRoleRequestStatus = async (
 ): Promise<RoleRequest | null> => {
   const requests = await getRoleRequests();
   const index = requests.findIndex((r) => r.id === requestId);
+
   if (index === -1) {
     return null;
   }
-  
+
   requests[index] = {
     ...requests[index],
     status,
@@ -40,7 +42,7 @@ export const updateRoleRequestStatus = async (
     processedBy,
     denialReason
   };
-  
+
   await saveRoleRequests(requests, `Update role request ${requestId} to ${status}`);
   return requests[index];
 };
@@ -66,12 +68,16 @@ export const handleRoleRequestSelection = async (
 
     await addRoleRequest(newRequest);
 
-    await discord.interactions.editReply(appId!, interactionToken, {
-      content: `Request submitted.\nRole: ${selectedRole}\nStatus: Pending Staff Approval`
+    await discord.patch(Routes.webhookMessage(appId!, interactionToken), {
+      body: {
+        content: `Request submitted.\nRole: ${selectedRole}\nStatus: Pending Staff Approval`
+      }
     });
-  } catch (error: any) {
-    await discord.interactions.editReply(appId!, interactionToken, {
-      content: `ERROR: Failed to submit role request.`
+  } catch {
+    await discord.patch(Routes.webhookMessage(appId!, interactionToken), {
+      body: {
+        content: "ERROR: Failed to submit role request."
+      }
     });
   }
 };
