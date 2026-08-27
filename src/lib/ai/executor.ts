@@ -24,8 +24,13 @@ export const executeAdminCommand = async (
       return;
     }
 
+    const model = process.env.OPENROUTER_MODEL;
+    if (!model) {
+      throw new Error("OPENROUTER_MODEL_MISSING");
+    }
+
     const response = await openrouter.chat.completions.create({
-      model: "google/gemini-pro-1.5",
+      model,
       messages: [{ role: "user", content: prompt }],
       tools: boundbotTools,
       tool_choice: "auto"

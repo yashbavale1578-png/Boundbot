@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
 
       <h2>3. AI Processing</h2>
       <p>Boundbot integrates a private Artificial Intelligence administration interface. <strong>Ordinary members cannot access or use this AI interface.</strong> Only the Server Owner and explicitly designated Trusted Moderators have access.</p>
-      <p>When an authorized staff member submits a command, their natural language prompt, along with context about available roles, is transmitted to <strong>OpenRouter</strong> for processing. This allows the AI to determine which administrative tool to use (e.g., approving a request or creating a role). The AI acts purely as an interpreter; every action it suggests is strictly validated by Boundbot&#39;s internal backend before any Discord changes occur.</p>
+      <p>When an authorized staff member submits a command, their natural language prompt, along with context about available roles, is transmitted to <strong>OpenRouter</strong> for processing by the <strong>NVIDIA Nemotron 3.5 Lightning</strong> model. This allows the AI to determine which administrative tool to use (e.g., approving a request or creating a role). The AI acts purely as an interpreter; every action it suggests is strictly validated by Boundbot&#39;s internal backend before any Discord changes occur.</p>
 
       <h2>4. GitHub Storage</h2>
       <p>To ensure persistent and reliable operation without a traditional database, Boundbot utilizes GitHub as a version-controlled persistence mechanism. The following data is securely written to private JSON files on GitHub:</p>

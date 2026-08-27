@@ -33,7 +33,7 @@ export default function TermsOfService() {
       </ul>
 
       <h2>5. AI Disclaimer</h2>
-      <p>Boundbot utilizes Artificial Intelligence (via OpenRouter) to interpret natural language requests from authorized staff. <strong>AI output can be incorrect, hallucinatory, or misinterpreted.</strong> The AI does not independently determine authorization. The backend capability checks remain strictly authoritative. Staff are strictly responsible for reviewing any potentially destructive actions suggested or executed by the AI.</p>
+      <p>Boundbot utilizes Artificial Intelligence (NVIDIA Nemotron 3.5 Lightning via OpenRouter) to interpret natural language requests from authorized staff. <strong>AI output can be incorrect, hallucinatory, or misinterpreted.</strong> The AI does not independently determine authorization. The backend capability checks remain strictly authoritative. Staff are strictly responsible for reviewing any potentially destructive actions suggested or executed by the AI.</p>
 
       <h2>6. Role Requests</h2>
       <p>Community members may request eligible roles via Boundbot&#39;s interactive panels. Every role assignment requires staff approval. Submitting a request does not guarantee approval. Authorized staff reserve the right to approve, deny, or ignore requests at their sole discretion.</p>
