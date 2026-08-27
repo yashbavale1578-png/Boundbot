@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyDiscordRequest } from "./verify";
 import { handleInteraction } from "./handler";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   const isValid = await verifyDiscordRequest(req);
